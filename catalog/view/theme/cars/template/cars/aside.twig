@@ -1,0 +1,81 @@
+    <aside class="sidebar">
+            <form class="sidebar__form" method="post" action="">
+                <h2 class="sidebar__title">Подберите авто</h2>
+                <select class="form__select" name="make" id="make">
+                    <option value="0">Выберите марку</option>
+                    {% for producer in carsProducers %}
+                        <option value="{{producer["manufacturer_id"]}}">{{producer["name"]}}</option>
+                    {%endfor%}
+                    <option value="1">Mazda</option>
+                    <option value="2">Skoda</option>
+                </select>
+                <select class="form__select" name="model" id="model">
+                    <option value="0">Выберите модель</option>
+                    {% for carsModel in carsModels %}
+                    <option value="{{carsModel["model"]}}">{{carsModel["model"]}}</option>
+                    {%endfor%}
+                    <option value="1">Mazda</option>
+                    <option value="2">Skoda</option>
+                </select>
+                <label class="form__label" for="price">Цена</label>
+                <div class="form__holder">
+                    <input class="form__input form__input_margin_left" id="priceFrom" type="text"/><span class="form__label">-</span>
+                    <input class="form__input form__input_margin_right"id="priceTo" type="text"/><span class="form__label">$</span>
+                </div>
+                <div class="form__expand" id="hiddenContent">
+                    <select class="form__select" name="fuel" id="fuel">
+                        <option value="0">Тип топлива</option>
+                        <option value="39">Бензин</option>
+                        <option value="40">Дизель</option>
+                        <option value="41">Электричество</option>
+                    </select>
+                    <select class="form__select" name="transmission" id="transmission">
+                        <option value="0">Коробка передач</option>
+                        <option value="49">Автоматическая</option>
+                        <option value="50">Робот</option>
+                        <option value="51">Вариатор</option>
+                        <option value="52">Механическая</option>
+                    </select>
+                    <label class="form__label" for="year-from">Год</label>
+                    <div class="form__holder">
+                        <select class="form__select form__select_width_double" name="year-from" id="year-from">
+                        <option value="">Нет</option>
+                        {%set year = 'now'|date('Y') %}
+                        {% for i in range(year,1960) %}
+                            <option value="{{i}}">{{i}}</option>
+                        {%endfor%}
+                        </select>
+                        <span class="form__label">-</span>
+                        <select class="form__select form__select_width_double" name="year-to" id="year-to">
+                        <option value="">Нет</option>
+                             {% for i in range(year,1960) %}
+                            <option value="{{i}}">{{i}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                </div>
+                <button class="form__button" type="button"><span class="form__button-inner">Показать результат</span></button>
+                <div class="form__wrap"><a class="form__search" id="showHideContent" href="#">Расширенный поиск</a></div>
+            </form>
+
+            <div class="sidebar__brands">
+            <ul class="sidebar__list">
+                {%set i =0 %}
+               {% for producer in carsProducersAndCount %}
+               {%if i%2 == 0 %}
+                    <li class="sidebar__item"><a data-id="{{producer["manufacturer_id"]}}" href="#">{{producer["name"]}} ({{producer["cManufacturer"]}})</a></li>
+                    {%endif%}
+                    {% set i = i + 1 %}
+                {%endfor%}
+                </ul>
+            <ul class="sidebar__list sidebar__list_type_right">
+                  {%set i =0 %}
+                  {% for producer in carsProducersAndCount %}
+                    {%if i%2 == 1 %}
+                        <li class="sidebar__item"><a data-id="{{producer["manufacturer_id"]}}" href="#">{{producer["name"]}} ({{producer["cManufacturer"]}})</a></li>
+                    {%endif%}
+                    {% set i = i + 1 %}
+                {%endfor%}
+                </ul>
+            </div>
+        </aside>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Тестовое задание “Каталог”</title>
+    <link rel="stylesheet" href="/catalog/view/theme/cars/stylesheet/styles.min.css" />
+    <script src="/catalog/view/javascript/cars/jquery-1.8.3.min.js"></script>
+    <script src="/catalog/view/javascript/cars/common.min.js"></script>
+    <script src="/catalog/view/javascript/cars/carsModelsFilter.js"></script>
+    <script src="/catalog/view/javascript/cars/mainCarsCard.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a href="#"><img class="header__logo" src="/catalog/view/theme/cars/images/header__logo.png" alt="Auto Company 7" /></a>
+            <div class="header__info">Тестовое задание “Каталог”</div>
+        </div>
+    </header>
+
+    <div class="layout">
+    <form enctype="multipart/form-data" action="/admin/index.php?route=cars/import&user_token={{usertoken}}" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    Отправить этот файл: <input name="userfile" type="file" />
+    <input type="submit" value="Отправить файл" />
+</form>
+  </div>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__copyright">© Lamanteam, 2015</div>
+        </div>
+    </footer>
+
+</body>
+</html>

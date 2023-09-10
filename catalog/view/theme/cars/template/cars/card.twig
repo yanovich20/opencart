@@ -1,0 +1,40 @@
+           
+                <div class="list__cars">
+                <ul class="catalog__list">
+                {% for car in cars %}
+                    <li class="catalog__item">
+                        <a class="catalog__image" href="#">
+                            <img src="/image/{{car.image}}" alt="{{car.manufacturer }} {{" "}} {{ car.model}}" />
+                            {% if(car.new =="Да")%}
+                            <div class="catalog__badge">Новинка</div>
+                            {%endif%}
+                        </a>
+                        <div class="catalog__description">
+                            <div class="catalog__wrap">
+                                <span class="catalog__price">${{car.price|round(2,'floor')}}</span>
+                            </div>
+                            <span class="catalog__number">{{car.artnumber}}</span>
+                            <a class="catalog__model" href="#">{{car.manufacturer }} {{" "}} {{ car.model}}</a>
+                            <p class="catalog__features">
+                                {{car.year}}, {{car.mileage}}, {{car.fuel}}, {{car.gearbox}}, {{car.bodytype}}
+                            </p>
+                            <p class="catalog__options" id="catalog__options">
+                                <span class="catalog__options-title">Опции:</span> {{car.options}}
+                            </p>
+                        </div>
+                    </li>
+                    {%endfor%}
+                </ul>
+
+                <div class="pagelist">
+                {%if(numberOfPages>1)%}
+                {% for i in range(1,numberOfPages)%}
+                    {%if(i==currentPage)%}
+                     <span class="pagelist__current">{{i}}</span>
+                     {%else%}
+                    <a href="#">{{i}}</a>
+                    {%endif%}
+                 {%endfor%}
+                 {%endif%}
+                </div>
+            </div>
